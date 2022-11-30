@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Decision Making Project 1</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+
+	<section id="main">
+		
+		<h1><u>Kepner-Tregoe method</u></h1>	
+		<h3>Enter your data</h3>
+
+        <button class="add" id="addP" value="Add Parameter" onclick="addParameter()">Add Parameters</button>
+        <button class="add" id="addA" value="Add Alternative" onclick="addAlternative()">Add Alternative</button>
+
+		<form id="myForm" onsubmit="return submitFunction(event)">
+
+			<table id="DM_table">
+				<tbody>
+					<tr>
+						<th>Parameters</th>
+						<th>Weight (0-10)</th>
+						<th id="column_structure">Alternative 1<br><input class="alternatives" type="text" /></th>
+					</tr>
+					<tr id="row_structure">
+						<td><input class="alternatives" type="text" /></td>
+						<td><input type="number" min='0' max='10'/></td>
+						<td><input type="number" /></td>
+					</tr>
+				</tbody>
+			  </table>           
+			<br>
+			<button class="submit" value="See results" onclick="KepnerTregoeMethod()">See results</button>
+		</form>
+		<button class="reset" value="Reset form" onclick="location.reload()">Reset form</button>
+
+	</section>
+	<br>
+	<div id="results">
+		<h1><u>Results:</u></h1>
+		<canvas id="myChart1" width="600px" height="400px"></canvas>
+		<br><br><br>
+		<canvas id="myChart2" width="600px" height="400px"></canvas>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="script.js"></script>
+
+</body>
+</html>

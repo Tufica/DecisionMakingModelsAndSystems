@@ -1,0 +1,112 @@
+body {
+    background-image: url("background.jpg");
+    background-attachment: fixed;
+    font-family: 'K2D', sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+#main {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 10px 10px 30px 3px rgb(48, 48, 48);
+    margin: 80px auto;
+    text-align: center;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+h1{
+    padding-top: 40px;
+    padding-bottom: 15px;
+}
+
+.add{
+    background-color: rgba(0, 0, 0, 0.05);
+    clear: both;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 2px 2px 3px 2px rgb(111, 111, 111);
+    width: 160px;
+    height: 40px;
+    text-align: center;
+}
+
+.add:hover {
+    padding-left: 5px;
+    background-color: rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+}
+
+table{
+    padding-right: 550px;
+}
+
+table, th, td {
+    background-color: rgba(0, 0, 0, 0.005);
+    margin-top: 25px;
+    margin-bottom: 40px;
+    margin-left: auto;  
+    margin-right: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 16px;
+    min-width: 140px;
+    height: 80px;
+    box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, 0.15);  
+}
+
+.alternatives{
+    min-width: 160px;
+    margin: 5px;
+}
+
+#DM_table input{
+    margin-left: auto;  
+    margin-right: auto;
+    font-size: 16px;
+    padding: 5px;
+    max-width: 70px;
+    border: 1px solid black;
+    border-radius: 3px;
+    display: block;
+    box-shadow: inset 2px 2px 2px 1px rgb(169, 169, 169);
+}
+
+#DM_table input[type="number"]{
+    text-align: center;
+}
+
+
+.submit, .reset {
+    background-color: rgba(0, 0, 0, 0.05);
+    clear: both;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 2px 2px 3px 2px rgb(111, 111, 111);
+    margin-bottom: 35px;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+}
+
+.submit:hover, .reset:hover {
+    padding-left: 5px;
+    background-color: rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+}
+
+
+#results {
+    display: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255);
+    box-shadow: 10px 10px 30px 3px rgb(48, 48, 48);
+    margin: 100px auto;
+    text-align: center;
+    padding: 0px 100px;
+    padding-bottom: 40px;
+}
