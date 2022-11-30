@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Decision Making Project 1</title>
+	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<body>
+
+	<section id="main">
+		
+		<h1><u>Decision Making Table</u></h1>	
+		<h3>Enter your data</h3>
+
+		<form id="myForm" method="POST" action="">
+
+			<table id="DM_table">
+				<tr>
+				  	<th>outcomes\alternatives</th>
+					<th>status quo</th>
+					<th>expansion</th>
+					<th>building HQ</th>
+					<th>collaboration</th>
+				</tr>
+				<tr>
+					<th>sales decrease</th>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+				</tr>
+				<tr>
+					<th>sales increase</th>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+					<td><input type="text" /></td>
+				</tr>
+			  </table>           
+			<br>
+
+		</form>
+        <button id="f" class="submit" value="See results">See results</button>
+	</section>
+  <br>
+  <h2 style="text-align: center;"><u>Results</u>:</h2>
+  <br>
+  <div id="tabela"></div>
+  <img  src="http://localhost:3000/wykres.png" alt ="Plot"/> 
+</body>
+
+
+<script>
+fetch("/tabela")
+      .then(res => res.text())
+      .then(resp => {
+          let tab = document.getElementById("tabela");
+          tab.innerHTML = resp;
+
+      });
+
+var inputs = document.getElementsByTagName("input");
+    var filtered = [...inputs].filter( x => x.type == 'text');
+
+    var button = document.getElementById("f");
+
+   
+
+    button.addEventListener('click',(e)=> {
+
+        console.log("asdsad")
+
+        values = filtered.map(x => x.value).join(" ");
+     
+        fetch("/eval",{method:"POST",body:values});
+        setTimeout(() => {
+            window.location.reload();
+}, 200)
+
+    })
+
+
+//     var form = document.getElementById("myForm");
+//     function handleForm(event) { event.preventDefault(); } 
+        var sse = new EventSource("/subscribe");
+
+        
+        sse.addEventListener("message", (e) => {
+                console.log(e.data)
+} );
+
+
+</script>
+
+<style>
+  body {
+    background: linear-gradient(20deg, rgba(244,213,172,1) 0%, rgba(238,216,187,1) 35%, rgba(250,235,215,1) 100%);
+    background-attachment: fixed;
+    font-family: 'K2D', sans-serif;
+    color: black;
+  }
+
+  #main {
+    border-radius: 20px;
+    background-color: rgba(253, 253, 253, 0.32);
+    box-shadow: 10px 10px 30px 3px rgb(48, 48, 48);;
+    max-width: 800px;
+    margin: 120px auto;
+    text-align: center;
+  }
+
+  h1{
+    padding-top: 40px;
+    padding-bottom: 15px;
+  }
+
+  .submit {
+    background-color: rgba(253, 253, 253, 0.6);
+    clear: both;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 2px 2px 3px 2px rgb(111, 111, 111);
+    margin-bottom: 35px;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+  }
+
+  .submit:hover {
+    padding-left: 5px;
+    background-color: rgba(214, 214, 214, 0.4);
+    cursor: pointer;
+  }
+
+  table, th, td {
+    background-color: rgba(0, 0, 0, 0.01);
+    margin-top: 25px;
+    margin-bottom: 40px;
+    margin-left: auto;  
+    margin-right: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 16px;
+    min-width: 110px;
+    height: 60px;
+    box-shadow: inset 2px 2px 5px 1px rgba(0, 0, 0, 0.15);  
+  }
+
+  #DM_table input[type="text"]{
+    margin-left: auto;  
+    margin-right: auto;
+    font-size: 16px;
+    padding: 5px;
+    max-width: 70px;
+    border: 1px solid black;
+    border-radius: 3px;
+    display: block;
+    box-shadow: inset 2px 2px 2px 1px rgb(169, 169, 169);
+    text-align: right;
+  }
+
+  img{
+    margin: 40px 24em;
+  }
+
+  #tabela{
+    text-align: center;
+  }
+
+  .result{
+    height: 190px;
+    }
+
+</style>
+
+</html>
